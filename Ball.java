@@ -8,17 +8,22 @@ import javax.swing.JPanel;
 public class Ball extends JPanel {
     //Initialize ball position
     int x = 0, y = 0, xVelocity = 1, yVelocity = 1;
-    int width = 300, height = 400;
+    int width = 700, height =700 ;
+    int diameter = 60;
     
 
     private void moveBall() {
-        if (x > width)
+        if (x > width - diameter)
             xVelocity = -1;
-        if (y > height)
+        if (y > height - diameter)
             yVelocity = -1;
+        if (x < width)
+            xVelocity = ;
+        if (y < width)
+            yVelocity = ; 
         // move ball
         x = x + xVelocity;
-        y = y +yVelocity;
+        y = y + yVelocity;
         
     }
 
@@ -34,7 +39,7 @@ public class Ball extends JPanel {
             RenderingHints.VALUE_ANTIALIAS_ON);
         
             //Draws the cirlce at new position with same diameter
-        g2d.fillOval(x, y, 60, 60);
+        g2d.fillOval(x, y, diameter, diameter);
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -42,7 +47,7 @@ public class Ball extends JPanel {
         JFrame frame = new JFrame("Mini Tennis");
         Ball game = new Ball();
         frame.add(game);
-        frame.setSize(1400, 800);
+        frame.setSize(game.width, game.height);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
