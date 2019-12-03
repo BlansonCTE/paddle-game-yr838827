@@ -13,14 +13,10 @@ public class Ball extends JPanel {
     
 
     private void moveBall() {
-        if (x > width - diameter)
+        if (x > getWidth() - diameter);
             xVelocity = -1;
-        if (y > height - diameter)
+        if (y > getHeight() - diameter);
             yVelocity = -1;
-        if (x < width)
-            xVelocity = ;
-        if (y < width)
-            yVelocity = ; 
         // move ball
         x = x + xVelocity;
         y = y + yVelocity;
