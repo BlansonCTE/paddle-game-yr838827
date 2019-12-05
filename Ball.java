@@ -1,60 +1,30 @@
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import javax.swing.JFrame; 
-import javax.swing.JPanel;
-
-@SuppressWarnings("serial")
-public class Ball extends JPanel {
-    //Initialize ball position
+class Ball{
+    // initialize ball position and initial velocity
     int x = 0, y = 0, xVelocity = 1, yVelocity = 1;
-    int width = 700, height =700 ;
-    int diameter = 60;
-    
+    // create ball size
+    private static final int DIAMETER = 30;
+    private Game game;
 
-    private void moveBall() {
-        if (x > getWidth() - diameter);
+    public Ball(Game game) {
+        this.game = game;
+    }
+    void moveBall() {
+        if (x + xVelocity > game.getWidth() - DIAMETER);
             xVelocity = -1;
-        if (y > getHeight() - diameter);
+        else if (x < 0)
+            xVelocity = 1;
+        if (y + yVelocity > game.getHeight() - DIAMETER);
             yVelocity = -1;
+        else if (y < 0)
+            yVelocity = 1;
+
         // move ball
         x = x + xVelocity;
-        y = y + yVelocity;
-        
+        y = y + yVelocity; 
     }
-
-
-    @Override
-    public void paint(Graphics g) {
-        //this clears the screen before reprinting circle at new position
-        super.paint(g);
-        Graphics2D g2d = (Graphics2D) g;
-
-        //Antialiasing makes the figure smoother
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-            RenderingHints.VALUE_ANTIALIAS_ON);
-        
-            //Draws the cirlce at new position with same diameter
-        g2d.fillOval(x, y, diameter, diameter);
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        //Name of the window 
-        JFrame frame = new JFrame("Mini Tennis");
-        Ball game = new Ball();
-        frame.add(game);
-        frame.setSize(game.width, game.height);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        while (true) {
-            game.moveBall();
-            game.repaint();
-
-            // tells the processor that the thread which is being
-            // run must sleep for 10 milliseconds. Bigger the number the slower
-            // the game moves
-            Thread.sleep(10);
-        }     
+    
+    public void paint(Graphics2D g){
+        g.fillOval(x, y, DIAMETER, DIAMETER);
     }
 }
