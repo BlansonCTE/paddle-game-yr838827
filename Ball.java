@@ -10,11 +10,11 @@ class Ball{
         this.game = game;
     }
     void moveBall() {
-        if (x + xVelocity > game.getWidth() - DIAMETER);
+        if (x + xVelocity > game.getWidth() - DIAMETER)
             xVelocity = -1;
         else if (x < 0)
             xVelocity = 1;
-        if (y + yVelocity > game.getHeight() - DIAMETER);
+        if (y + yVelocity > game.getHeight() - DIAMETER)
             yVelocity = -1;
         else if (y < 0)
             yVelocity = 1;

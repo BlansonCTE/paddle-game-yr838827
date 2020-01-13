@@ -1,44 +1,80 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import javax.swing.JFrame; 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+// suppresses all warnings for serialization
 @SuppressWarnings("serial")
+//Game class 
 public class Game extends JPanel {
-    Ball ball = new Ball(this);
-    @Override
-    public void paint(Graphics g) {
-        //this clears the screen before reprinting circle at new position
-        super.paint(g);
-        Graphics2D g2d = (Graphics2D) g;
+    //
+	Ball ball = new Ball(this);
+	Paddle paddle = new Paddle(this);
+	int speed = 1;
 
-        //Antialiasing makes the figure smoother
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
-        ball.paint(g2d); 
-    }
-    private void move(){
+	public Game() {
+        // an event is created which recieves keystrokes from the user
+		addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}
+
+            @Override
+            // method is created for when keys are realeased
+			public void keyReleased(KeyEvent e) {
+				paddle.keyReleased(e);
+			}
+
+            @Override
+            // method is created for when keys are being pressed
+			public void keyPressed(KeyEvent e) {
+				paddle.keyPressed(e);
+			}
+        });
+        // 
+		setFocusable(true);
+	}
+	
+	private void move() {
+        // moveBall method can be accesed from the ball class
         ball.moveBall();
-    }
-    public static void main(String[] args) throws InterruptedException {
-        //Name of the window 
-        JFrame frame = new JFrame("Mini Tennis");
-        // creates an instance of the game
-        Game game = new Game();
-        // add the game object to the frame 
-        frame.add(game);
-        // set window size (width, height)
-        frame.setSize(300,400);
-        // initially invisible so needs to be made visible
-        frame.setVisible(true);
-        // close the frame when the window is closed
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //  moveBall method can be accesed from the paddle class
+		paddle.moveBall();
+	}
 
-        while (true) {
-            game.move();
+	@Override
+	public void paint(Graphics g) {
+        // 
+		super.paint(g);
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+				RenderingHints.VALUE_ANTIALIAS_ON);
+		ball.paint(g2d);
+		paddle.paint(g2d);	
+	}
+
+	public static void main(String[] args) throws InterruptedException {
+        // creates a title for the window
+		JFrame frame = new JFrame("Mini Tennis");
+		Game game = new Game();
+        frame.add(game);
+        // creates dimensions for the window
+		frame.setSize(300, 400);
+        frame.setVisible(true);
+        // 
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		while (true) {
+			game.move();
             game.repaint();
-            // run must sleep for 10 milliseconds. Bigger the number the slower
-            Thread.sleep(10);
-        }     
-    }
+            // 
+			Thread.sleep(10);
+		}
+	}
 }
