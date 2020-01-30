@@ -8,6 +8,10 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import sun.audio.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.*;
 
 // suppresses all warnings for serialization
 @SuppressWarnings("serial")
@@ -37,7 +41,7 @@ public class Game extends JPanel {
 				paddle.keyPressed(e);
 			}
         });
-        // 
+        // sets boolean to true for it to run 
 		setFocusable(true);
 	}
 	
@@ -54,10 +58,27 @@ public class Game extends JPanel {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
+                RenderingHints.VALUE_ANTIALIAS_ON);
+     
 		ball.paint(g2d);
-		paddle.paint(g2d);	
+		paddle.paint(g2d);
+		
+		//Score 
+		g2d.setColor(Color.gray);
+		g2d.setFont(new Font("Comic Sans", Font.ITALIC, 30));
+		g2d.drawString(String.valueOf(getScore()), 10, 30);
 	}
+
+	public void gameOver(){
+		JOptionPane.showMessageDialog(this, "Your score is: "+ getScore(),"Game Over", JOptionPane.YES_NO_OPTION);
+		System.exit(ABORT);
+	}
+
+	//returns the score 
+	private int getScore(){
+		return speed -1;
+	}
+
 
 	public static void main(String[] args) throws InterruptedException {
         // creates a title for the window
@@ -66,15 +87,32 @@ public class Game extends JPanel {
         frame.add(game);
         // creates dimensions for the window
 		frame.setSize(300, 400);
+		// frame.setLocationRelativeTo(null);
+		// JButton button = new JButton("Click me");
+		// frame.add(button);
+		// button.addActionListener(new AL());
+        // makes the window visible if conditions are met 
         frame.setVisible(true);
-        // 
+        // enables user to exit the window
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		while (true) {
 			game.move();
             game.repaint();
-            // 
+            // delays for 10 milliseconds 
 			Thread.sleep(10);
 		}
 	}
 }
+
+// static class AL implements ActionListener{
+// 	public final void actionPerformed(ActionEvent e){
+// 		music()
+// 	}
+// }
+
+// 	public static void music()
+// 	{
+// 		AudioPlayer MGP = AudioPlayer.player;
+
+// 	}
