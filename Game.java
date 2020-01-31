@@ -16,8 +16,10 @@ import java.io.*;
 // suppresses all warnings for serialization
 @SuppressWarnings("serial")
 //Game class 
-public class Game extends JPanel {
-    //
+public class Game extends JPanel 
+
+	//
+	Player player = new Player(this);
 	Ball ball = new Ball(this);
 	Paddle paddle = new Paddle(this);
 	int speed = 1;
@@ -87,10 +89,6 @@ public class Game extends JPanel {
         frame.add(game);
         // creates dimensions for the window
 		frame.setSize(300, 400);
-		// frame.setLocationRelativeTo(null);
-		// JButton button = new JButton("Click me");
-		// frame.add(button);
-		// button.addActionListener(new AL());
         // makes the window visible if conditions are met 
         frame.setVisible(true);
         // enables user to exit the window
@@ -105,14 +103,3 @@ public class Game extends JPanel {
 	}
 }
 
-// static class AL implements ActionListener{
-// 	public final void actionPerformed(ActionEvent e){
-// 		music()
-// 	}
-// }
-
-// 	public static void music()
-// 	{
-// 		AudioPlayer MGP = AudioPlayer.player;
-
-// 	}
