@@ -30,8 +30,8 @@ public class Paddle {
     public void paint(Graphics2D g) {
         g.setColor(Color.YELLOW);
         g.fillRect(x, Y, WIDTH, HEIGHT);
-    }
-
+    } 
+    
     public void keyReleased(KeyEvent e) {
         xa = 0;
     }

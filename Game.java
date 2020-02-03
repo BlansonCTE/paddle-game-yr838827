@@ -16,8 +16,9 @@ import javax.swing.JPanel;
 // suppresses all warnings for serialization
 @SuppressWarnings("serial")
 //Game class 
-public class Game extends JPanel {
-    //
+public class Game extends JPanel 
+
+	//
 	Ball ball = new Ball(this);
 	Paddle paddle = new Paddle(this);
 	Player player = new Player(this);
@@ -109,14 +110,3 @@ public class Game extends JPanel {
 	}
 }
 
-// static class AL implements ActionListener{
-// 	public final void actionPerformed(ActionEvent e){
-// 		music()
-// 	}
-// }
-
-// 	public static void music()
-// 	{
-// 		AudioPlayer MGP = AudioPlayer.player;
-
-// 	}
