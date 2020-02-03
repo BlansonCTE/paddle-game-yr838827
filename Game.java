@@ -8,10 +8,10 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import sun.audio.*;
-import javax.swing.*;
-import java.awt.event.*;
-import java.io.*;
+// import sun.audio.*;
+// import javax.swing.*;
+// import java.awt.event.*;
+// import java.io.*;
 
 // suppresses all warnings for serialization
 @SuppressWarnings("serial")
@@ -20,6 +20,7 @@ public class Game extends JPanel {
     //
 	Ball ball = new Ball(this);
 	Paddle paddle = new Paddle(this);
+	Player player = new Player(this);
 	int speed = 1;
 
 	public Game() {
@@ -50,6 +51,7 @@ public class Game extends JPanel {
         ball.moveBall();
         //  moveBall method can be accesed from the paddle class
 		paddle.moveBall();
+		player.moveBall();
 	}
 
 	@Override
@@ -63,10 +65,12 @@ public class Game extends JPanel {
 		ball.paint(g2d);
 		paddle.paint(g2d);
 		
+		
 		//Score 
 		g2d.setColor(Color.gray);
 		g2d.setFont(new Font("Comic Sans", Font.ITALIC, 30));
-		g2d.drawString(String.valueOf(getScore()), 10, 30);
+		g2d.drawString(String.valueOf(getScore()), 25, 45);
+		g2d.drawString(String.valueOf(getScore()), 905,45);
 	}
 
 	public void gameOver(){
@@ -82,11 +86,11 @@ public class Game extends JPanel {
 
 	public static void main(String[] args) throws InterruptedException {
         // creates a title for the window
-		JFrame frame = new JFrame("Mini Tennis");
+		JFrame frame = new JFrame("pong?");
 		Game game = new Game();
         frame.add(game);
         // creates dimensions for the window
-		frame.setSize(300, 400);
+		frame.setSize(1000, 1000);
 		// frame.setLocationRelativeTo(null);
 		// JButton button = new JButton("Click me");
 		// frame.add(button);
