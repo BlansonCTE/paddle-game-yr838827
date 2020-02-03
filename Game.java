@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 // suppresses all warnings for serialization
 @SuppressWarnings("serial")
 //Game class 
-public class Game extends JPanel 
+public class Game extends JPanel{
 
 	//
 	Ball ball = new Ball(this);
