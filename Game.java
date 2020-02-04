@@ -92,11 +92,6 @@ public class Game extends JPanel{
         frame.add(game);
         // creates dimensions for the window
 		frame.setSize(1000, 1000);
-		// frame.setLocationRelativeTo(null);
-		// JButton button = new JButton("Click me");
-		// frame.add(button);
-		// button.addActionListener(new AL());
-        // makes the window visible if conditions are met 
         frame.setVisible(true);
         // enables user to exit the window
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
