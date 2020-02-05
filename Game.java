@@ -35,12 +35,14 @@ public class Game extends JPanel{
             // method is created for when keys are realeased
 			public void keyReleased(KeyEvent e) {
 				paddle.keyReleased(e);
+				player.keyReleased(e);
 			}
 
             @Override
             // method is created for when keys are being pressed
 			public void keyPressed(KeyEvent e) {
 				paddle.keyPressed(e);
+				player.keyPressed(e);
 			}
         });
         // sets boolean to true for it to run 
@@ -51,8 +53,8 @@ public class Game extends JPanel{
         // moveBall method can be accesed from the ball class
         ball.moveBall();
         //  moveBall method can be accesed from the paddle class
-		paddle.moveBall();
-		player.moveBall();
+		paddle.move();
+		player.move();
 	}
 
 	@Override
@@ -61,10 +63,12 @@ public class Game extends JPanel{
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-     
+				RenderingHints.VALUE_ANTIALIAS_ON);
+				
+		setBackground(Color.black);
 		ball.paint(g2d);
 		paddle.paint(g2d);
+		player.paint(g2d);
 		
 		
 		//Score 

@@ -22,7 +22,7 @@ class Ball{
         if (y + ya > game.getHeight()-DIAMETER)
             game.gameOver();
         if (collision()) {
-            ya = -game.speed;
+            xa = -game.speed;
             y = game.paddle.getTopY() - DIAMETER;
             game.speed++;
         }
@@ -38,6 +38,7 @@ class Ball{
     }
     private boolean collision(){
         return game.paddle.getBounds().intersects(getBounds());
+
     }
 
     public Rectangle getBounds(){
