@@ -37,9 +37,9 @@ public class Player{
     }
 
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W)
+        if (e.getKeyCode() == KeyEvent.VK_UP)
             xa = -game.speed;
-        if (e.getKeyCode() == KeyEvent.VK_S)
+        if (e.getKeyCode() == KeyEvent.VK_DOWN)
             xa = game.speed;
     }    
     

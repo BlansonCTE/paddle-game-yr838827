@@ -73,13 +73,13 @@ public class Game extends JPanel{
 		
 		//Score 
 		g2d.setColor(Color.gray);
-		g2d.setFont(new Font("Comic Sans", Font.ITALIC, 30));
+		g2d.setFont(new Font("Sans", Font.BOLD, 30));
 		g2d.drawString(String.valueOf(getScore()), 25, 45);
 		g2d.drawString(String.valueOf(getScore()), 905,45);
 	}
 
 	public void gameOver(){
-		JOptionPane.showMessageDialog(this, "Your score is: "+ getScore(),"Game Over", JOptionPane.YES_NO_OPTION);
+		JOptionPane.showMessageDialog(this, "Your score is: "+ getScore(),"pathetic", JOptionPane.YES_NO_OPTION);
 		System.exit(ABORT);
 	}
 
