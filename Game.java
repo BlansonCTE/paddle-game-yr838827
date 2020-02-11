@@ -20,8 +20,8 @@ public class Game extends JPanel{
 
 	//
 	Ball ball = new Ball(this);
-	Paddle paddle = new Paddle(this);
-	Player player = new Player(this);
+	Paddle paddle1 = new Paddle(this);
+	Paddle paddle2 = new Paddle(this)
 	int speed = 1;
 
 	public Game() {
@@ -87,6 +87,7 @@ public class Game extends JPanel{
 	private int getScore(){
 		return speed -1;
 	}
+
 
 
 	public static void main(String[] args) throws InterruptedException {

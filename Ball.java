@@ -19,20 +19,20 @@ class Ball{
             game.gameOver();
         if (y + ya < 0)
             ya = -game.speed;
-        if (y + ya > game.getHeight()-DIAMETER)
-           xa = game.speed;
         if (y +ya > game.getHeight()-DIAMETER)
             ya = -game.speed;
-        if (y + ya > game.getHeight()- DIAMETER)
+        if (y + ya < 0)
             ya = game.speed;
         //makes ball bounce off paddle
         if (collision()) {
             xa *= -game.speed;
             x += 5; 
+            game.speed++;
         }
         if (collision2()){
             xa *= -game.speed;
             x -= 5;
+            game.speed++;
 
         }
         
