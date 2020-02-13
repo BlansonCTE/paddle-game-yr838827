@@ -26,16 +26,9 @@ class Ball{
         //makes ball bounce off paddle
         if (collision()) {
             xa *= -game.speed;
-            x += 5; 
+            x += 2; 
             game.speed++;
         }
-        if (collision2()){
-            xa *= -game.speed;
-            x -= 5;
-            game.speed++;
-
-        }
-        
         // move ball
         x = x + xa;
         y = y + ya; 
@@ -47,12 +40,17 @@ class Ball{
         g.fillOval(x, y, DIAMETER, DIAMETER);
     }
     private boolean collision(){
-        return game.paddle.getBounds().intersects(getBounds());
+        boolean collided =false;
+         
+        if (game.paddle1.getBounds().intersects(getBounds())){
+            collided = true;
+        }
+        if (game.paddle2.getBounds().intersects(getBounds())){
+            collided = true;
+        }
+        return collided;
+    }
 
-    }
-    private boolean collision2(){
-        return game.player.getBounds().intersects(getBounds());
-    }
 
     public Rectangle getBounds(){
         return new Rectangle(x, y, DIAMETER, DIAMETER);

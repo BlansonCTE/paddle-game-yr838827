@@ -20,8 +20,8 @@ public class Game extends JPanel{
 
 	//
 	Ball ball = new Ball(this);
-	Paddle paddle1 = new Paddle(this);
-	Paddle paddle2 = new Paddle(this)
+	Paddle paddle1 = new Paddle(this,50,500);
+	Paddle paddle2 = new Paddle(this,900,500);
 	int speed = 1;
 
 	public Game() {
@@ -34,15 +34,25 @@ public class Game extends JPanel{
             @Override
             // method is created for when keys are realeased
 			public void keyReleased(KeyEvent e) {
-				paddle.keyReleased(e);
-				player.keyReleased(e);
+				if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_S){
+					paddle1.keyReleased(e);
+				}
+				if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN){
+					paddle2.keyReleased(e);
+				}
+
 			}
 
             @Override
             // method is created for when keys are being pressed
 			public void keyPressed(KeyEvent e) {
-				paddle.keyPressed(e);
-				player.keyPressed(e);
+				if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_S){
+					paddle1.keyPressed(e);
+				}
+				if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN ){
+					paddle2.keyPressed(e);
+				}
+
 			}
         });
         // sets boolean to true for it to run 
@@ -53,8 +63,8 @@ public class Game extends JPanel{
         // moveBall method can be accesed from the ball class
         ball.moveBall();
         //  moveBall method can be accesed from the paddle class
-		paddle.move();
-		player.move();
+		paddle1.move();
+		paddle2.move();
 	}
 
 	@Override
@@ -67,8 +77,8 @@ public class Game extends JPanel{
 				
 		setBackground(Color.black);
 		ball.paint(g2d);
-		paddle.paint(g2d);
-		player.paint(g2d);
+		paddle1.paint(g2d);
+		paddle2.paint(g2d);
 		
 		
 		//Score 

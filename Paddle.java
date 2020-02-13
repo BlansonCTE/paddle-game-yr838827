@@ -6,20 +6,22 @@ import java.awt.event.KeyEvent;
 public class Paddle {
     // 1. Create a variable that will hold the Y axis of the paddle
     //    remember the paddle needs to have a constant Y axis because it shouldnt move vertically
-    int Y = 550; 
+    int Y; 
     // 2. Create a variable to hold the width of the paddle.
     int WIDTH = 20;
     // 3. Create a variable to hold the height of the paddle.
     int HEIGHT = 70;
     // create a variable for current speed
-    int x = 0;
+    int x;
     // create a variable for change in paddle velocity
     int xa = 0;
 
     private Game game;
 
-    public Paddle(Game game){
+    public Paddle(Game game,int x, int Y){
         this.game = game;
+        this.x = x;
+        this.Y = Y;
     }
 
     public void move() {
@@ -37,9 +39,9 @@ public class Paddle {
     }
 
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W)
+        if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP)
             xa = -game.speed;
-        if (e.getKeyCode() == KeyEvent.VK_S)
+        if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN)
             xa = game.speed;
     }    
     
